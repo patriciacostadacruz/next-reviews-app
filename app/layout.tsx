@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import Link from 'next/link';
 import './globals.css';
+import Navbar from '../components/Navbar';
 
 interface RootProps {
   children: ReactNode;
@@ -9,25 +9,12 @@ interface RootProps {
 export default function RootLayout({ children }: RootProps) {
   return (
     <html lang="en">
-      <body className="flex flex-col px-4 py-2 min-h-screen">
+      <body className="bg-orange-50 flex flex-col px-4 py-2 min-h-screen">
         <header>
-          <nav>
-            <ul className="flex gap-2">
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/reviews">Reviews</Link>
-              </li>
-              <li>
-                {/* argument prefetch={false} can be added to the Link - allows to avoid prefecthing the doc in prod builds */}
-                <Link href="/about">About</Link>
-              </li>
-            </ul>
-          </nav>
+          <Navbar />
         </header>
-        <main className="border-t py-3 text-center text-xs">{children}</main>
-        <footer>
+        <main className="grow py-3">{children}</main>
+        <footer className="border-t py-3 text-center text-xs">
           Game data and images, courtesy of:{' '}
           <a href="https://rawg.io/" target="blank">
             RAWG
