@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
-import './globals.css';
 import Navbar from '../components/Navbar';
+import './globals.css';
 
 interface RootProps {
   children: ReactNode;
@@ -16,7 +16,11 @@ export default function RootLayout({ children }: RootProps) {
         <main className="grow py-3">{children}</main>
         <footer className="border-t py-3 text-center text-xs">
           Game data and images, courtesy of:{' '}
-          <a href="https://rawg.io/" target="blank">
+          <a
+            href="https://rawg.io/"
+            target="blank"
+            className="text-orange-800 hover:underline"
+          >
             RAWG
           </a>
         </footer>
