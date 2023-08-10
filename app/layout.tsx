@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 
 interface RootProps {
   children: ReactNode;
@@ -12,13 +13,13 @@ export default function RootLayout({ children }: RootProps) {
           <nav>
             <ul>
               <li>
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <a href="/reviews">Reviews</a>
+                <Link href="/reviews">Reviews</Link>
               </li>
               <li>
-                <a href="/about">About</a>
+                <Link href="/about">About</Link>
               </li>
             </ul>
           </nav>
