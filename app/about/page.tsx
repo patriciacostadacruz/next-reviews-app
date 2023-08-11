@@ -4,7 +4,9 @@ export default function AboutPage() {
   return (
     <>
       <Heading>About</Heading>
-      <p>This is the about section for this website created to lear Next.js.</p>
+      <p>
+        This is the about section for this website created to learn Next.js.
+      </p>
     </>
   );
 }
