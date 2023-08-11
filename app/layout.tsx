@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Navbar from '../components/Navbar';
 import './globals.css';
+import { orbitron } from './fonts';
 
 interface RootProps {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface RootProps {
 
 export default function RootLayout({ children }: RootProps) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${orbitron.variable}`}>
       <body className="bg-orange-50 flex flex-col px-4 py-2 min-h-screen">
         <header>
           <Navbar />

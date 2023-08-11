@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./app/**/*.tsx', './components/**/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
