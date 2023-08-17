@@ -17,7 +17,10 @@ export default async function StardewValleyPage() {
         className="mb-2 rounded"
       />
       {/* argument used to display only the text from html */}
-      <article dangerouslySetInnerHTML={{ __html: html }} />
+      <article
+        dangerouslySetInnerHTML={{ __html: html }}
+        className="prose prose-slate max-w-screen-sm"
+      />
     </>
   );
 }
