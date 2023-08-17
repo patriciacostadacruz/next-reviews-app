@@ -16,7 +16,8 @@ export default async function StardewValleyPage() {
         height="360"
         className="mb-2 rounded"
       />
-      <p>{html}</p>
+      {/* argument used to display only the text from html */}
+      <article dangerouslySetInnerHTML={{ __html: html }} />
     </>
   );
 }
