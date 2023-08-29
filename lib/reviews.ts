@@ -1,8 +1,10 @@
-import { readFile } from 'node:fs/promises';
+// readdir allows access to list all files in directory
+import { readdir, readFile } from 'node:fs/promises';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
 export interface Review {
+  slug: string;
   title: string;
   date: string;
   image: string;
@@ -17,5 +19,18 @@ export async function getReview(slug: string): Promise<Review> {
     data: { title, date, image },
   } = matter(text);
   const body = marked(content);
-  return { title, date, image, body };
+  return { slug, title, date, image, body };
+}
+
+export async function getReviews(): Promise<Review[]> {
+  const files = await readdir('./content/reviews');
+  const slugs = files
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => file.slice(0, -'.md'.length));
+  const reviews: Review[] = [];
+  for (const slug of slugs) {
+    const review = await getReview(slug);
+    reviews.push(review);
+  }
+  return reviews;
 }
