@@ -8,7 +8,7 @@ export default async function ReviewsPage() {
   return (
     <>
       <Heading>Reviews</Heading>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-row flex-wrap gap-3">
         {reviews.map((review) => (
           <li
             className="border w-80 bg-white rounded hover:shadow-xl"
