@@ -29,7 +29,13 @@ export async function getReviews(): Promise<Review[]> {
     const review = await getReview(slug);
     reviews.push(review);
   }
-  return reviews;
+  return reviews.sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export async function getFeaturedReview(): Promise<Review> {
+  const reviews = await getReviews();
+  const featuredReview = reviews[0];
+  return featuredReview;
 }
 
 export async function getSlugs(): Promise<string[]> {

@@ -1,7 +1,10 @@
 import Heading from '@/components/Heading';
 import Link from 'next/link';
+import { getFeaturedReview } from '@/lib/reviews';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const featuredReview = await getFeaturedReview();
+
   return (
     <>
       <Heading>Indie Gamer</Heading>
@@ -9,7 +12,7 @@ export default function HomePage() {
       <div className="border bg-white w-80 sm:w-full rounded hover:shadow-xl">
         <Link
           className="flex flex-col sm:flex-row"
-          href="/reviews/hollow-knight"
+          href={`/reviews/${featuredReview.slug}`}
         >
           <img
             src="/images/game.png"
@@ -19,7 +22,7 @@ export default function HomePage() {
             className="rounded-t sm:rounded-l sm:rounded-r-none"
           />
           <h2 className="py-1 text-center font-orbitron font-semibold sm:px-2">
-            Hollow Knight
+            {featuredReview.title}
           </h2>
         </Link>
       </div>
