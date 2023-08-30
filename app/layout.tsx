@@ -8,9 +8,12 @@ interface RootProps {
   children: ReactNode;
 }
 
-// used to give the page a name
+// used to give the page a global name and a template
 export const metadata: Metadata = {
-  title: 'Indie Gamer',
+  title: {
+    default: 'Indie Gamer',
+    template: '%s | Indie Gamer',
+  },
   description: 'Only the best indie games, reviewed for you.',
 };
 
