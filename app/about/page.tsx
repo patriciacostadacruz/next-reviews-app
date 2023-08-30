@@ -1,4 +1,10 @@
 import Heading from '@/components/Heading';
+import { Metadata } from 'next';
+
+// used to give the page a name
+export const metadata: Metadata = {
+  title: 'About',
+};
 
 export default function AboutPage() {
   return (
