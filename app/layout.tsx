@@ -1,11 +1,18 @@
+import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Navbar from '../components/Navbar';
-import { orbitron, exo2 } from './fonts';
+import { exo2, orbitron } from './fonts';
 import './globals.css';
 
 interface RootProps {
   children: ReactNode;
 }
+
+// used to give the page a name
+export const metadata: Metadata = {
+  title: 'Indie Gamer',
+  description: 'Only the best indie games, reviewed for you.',
+};
 
 export default function RootLayout({ children }: RootProps) {
   return (
