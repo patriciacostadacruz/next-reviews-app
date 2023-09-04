@@ -15,7 +15,7 @@ export default async function HomePage() {
           href={`/reviews/${featuredReview.slug}`}
         >
           <img
-            src="/images/game.png"
+            src={featuredReview.image}
             alt="Game"
             width="320"
             height="180"
