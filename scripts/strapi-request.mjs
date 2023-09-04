@@ -7,7 +7,10 @@ const url =
   '?' +
   qs.stringify(
     {
-      fields: ['slug', 'title'],
+      fields: ['slug', 'title', 'subtitle', 'publishedAt'],
+      // to retrieve all fields
+      // populate: '*'
+      populate: { image: { fields: ['url'] } },
     },
     { encodeValuesOnly: true }
   );
