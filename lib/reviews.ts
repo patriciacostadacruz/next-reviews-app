@@ -14,7 +14,11 @@ export interface Review {
   body: string;
 }
 
-export async function getReview(slug: string): Promise<Review> {
+export interface FullReview extends Review {
+  body: string;
+}
+
+export async function getReview(slug: string): Promise<FullReview> {
   const text = await readFile(`./content/reviews/${slug}.md`, 'utf8');
   // returns content property from the file (the review, here) and the data is the front matter
   const {
