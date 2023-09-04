@@ -1,7 +1,10 @@
 // readdir allows access to list all files in directory
-import { readdir, readFile } from 'node:fs/promises';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import { readdir, readFile } from 'node:fs/promises';
+import qs from 'qs';
+
+const CMS_URL = 'http://localhost:1337';
 
 export interface Review {
   slug: string;
@@ -23,13 +26,27 @@ export async function getReview(slug: string): Promise<Review> {
 }
 
 export async function getReviews(): Promise<Review[]> {
-  const slugs = await getSlugs();
-  const reviews: Review[] = [];
-  for (const slug of slugs) {
-    const review = await getReview(slug);
-    reviews.push(review);
-  }
-  return reviews.sort((a, b) => b.date.localeCompare(a.date));
+  const url =
+    `${CMS_URL}/api/reviews?` +
+    qs.stringify(
+      {
+        fields: ['slug', 'title', 'subtitle', 'publishedAt'],
+        // to retrieve all fields
+        // populate: '*'
+        populate: { image: { fields: ['url'] } },
+        sort: ['publishedAt:desc'],
+        pagination: { pageSize: 6 },
+      },
+      { encodeValuesOnly: true }
+    );
+  const response = await fetch(url);
+  const { data } = await response.json();
+  return data.map((item) => ({
+    slug: item.attributes.slug,
+    title: item.attributes.title,
+    date: item.attributes.publishedAt.slice(0, 'yyyy-mm-dd'.length),
+    image: CMS_URL + item.attributes.image.data.attributes.url,
+  }));
 }
 
 export async function getFeaturedReview(): Promise<Review> {
