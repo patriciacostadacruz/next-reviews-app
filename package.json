@@ -2,7 +2,9 @@
   "name": "next-reviews",
   "private": true,
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
