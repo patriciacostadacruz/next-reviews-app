@@ -11,6 +11,8 @@ const url =
       // to retrieve all fields
       // populate: '*'
       populate: { image: { fields: ['url'] } },
+      sort: ['publishedAt:desc'],
+      pagination: { pageSize: 6 },
     },
     { encodeValuesOnly: true }
   );
