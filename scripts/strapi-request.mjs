@@ -7,12 +7,12 @@ const url =
   '?' +
   qs.stringify(
     {
-      fields: ['slug', 'title', 'subtitle', 'publishedAt'],
+      fields: ['slug', 'title', 'subtitle', 'publishedAt', 'body'],
       // to retrieve all fields
       // populate: '*'
+      filters: { slug: { $eq: 'hades-2018' } },
       populate: { image: { fields: ['url'] } },
-      sort: ['publishedAt:desc'],
-      pagination: { pageSize: 6 },
+      pagination: { pageSize: 1, withCount: false },
     },
     { encodeValuesOnly: true }
   );
