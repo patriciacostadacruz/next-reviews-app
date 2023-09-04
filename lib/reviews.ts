@@ -25,7 +25,7 @@ export async function getFeaturedReview(): Promise<Review> {
 }
 
 export async function getReview(slug: string): Promise<FullReview> {
-  const { data } = fetchReviews({
+  const { data } = await fetchReviews({
     filters: { slug: { $eq: slug } },
     fields: ['slug', 'title', 'subtitle', 'publishedAt', 'body'],
     populate: { image: { fields: ['url'] } },
