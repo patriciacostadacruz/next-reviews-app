@@ -39,12 +39,15 @@ export async function getReview(slug: string): Promise<FullReview> {
   };
 }
 
-export async function getReviews(pageSize: number): Promise<Review[]> {
+export async function getReviews(
+  pageSize: number,
+  page?: number
+): Promise<Review[]> {
   const { data } = await fetchReviews({
     fields: ['slug', 'title', 'subtitle', 'publishedAt'],
     populate: { image: { fields: ['url'] } },
     sort: ['publishedAt:desc'],
-    pagination: { pageSize },
+    pagination: { pageSize, page },
   });
   return data.map(toReview);
 }
@@ -64,6 +67,7 @@ async function fetchReviews(parameters: any) {
     qs.stringify(parameters, { encodeValuesOnly: true });
   const response = await fetch(url, {
     next: {
+      // revalidates cache when CMS is modified
       tags: [CACHE_TAG_REVIEWS],
     },
   });
