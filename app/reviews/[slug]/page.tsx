@@ -41,6 +41,7 @@ export default async function ReviewPage({
       </div>
       <Image
         src={review.image}
+        priority
         alt="Game"
         width="650"
         height="360"

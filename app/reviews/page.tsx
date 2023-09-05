@@ -22,6 +22,7 @@ export default async function ReviewsPage() {
           >
             <Link href={`/reviews/${review.slug}`}>
               <Image
+                priority
                 src={review.image}
                 alt="Game"
                 width="320"
