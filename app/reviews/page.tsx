@@ -1,4 +1,4 @@
-import Heading from '@/components/heading';
+import Heading from '@/components/Heading';
 import { getReviews } from '@/lib/reviews';
 import { Metadata } from 'next';
 import Image from 'next/image';

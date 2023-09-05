@@ -2,7 +2,7 @@
 // will be rendered both in server AND browser - hydration
 'use client';
 
-import ShareLinkButton from './share-link-button';
+import ShareLinkButton from './ShareLinkButton';
 
 export default function ShareButtons() {
   return (
