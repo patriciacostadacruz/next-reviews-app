@@ -1,5 +1,5 @@
-import Heading from '@/components/Heading';
-import ShareButtons from '@/components/ShareButtons';
+import Heading from '@/components/heading';
+import ShareButtons from '@/components/share-buttons';
 import { getReview, getSlugs } from '@/lib/reviews';
 import { Metadata } from 'next';
 import Image from 'next/image';
