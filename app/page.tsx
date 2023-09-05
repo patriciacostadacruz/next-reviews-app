@@ -13,7 +13,7 @@ export default async function HomePage() {
       {featuredReviews.map((featuredReview, index) => (
         <li
           key={featuredReview.slug}
-          className="border bg-white w-80 sm:w-full shadow rounded hover:shadow-xl"
+          className="border bg-white w-80 sm:w-full shadow rounded hover:shadow-xl list-none"
         >
           <Link
             className="flex flex-col sm:flex-row"
@@ -27,9 +27,12 @@ export default async function HomePage() {
               height="180"
               className="rounded-t sm:rounded-l sm:rounded-r-none"
             />
-            <h2 className="py-1 text-center font-orbitron font-semibold sm:px-2">
-              {featuredReview.title}
-            </h2>
+            <div className="px-2 py-1 text-center sm:text-left">
+              <h2 className="font-orbitron font-semibold">
+                {featuredReview.title}
+              </h2>
+              <p className="hidden sm:block pt-2">{featuredReview.subtitle}</p>
+            </div>
           </Link>
         </li>
       ))}
