@@ -1,5 +1,3 @@
-import { orbitron } from '@/app/fonts';
-
 interface HeadingProps {
   children: string;
 }
