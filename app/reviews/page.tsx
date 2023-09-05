@@ -33,7 +33,9 @@ export default async function ReviewsPage({ searchParams }: ReviewsPageProps) {
     <>
       <Heading>Reviews</Heading>
       <div className="flex gap-2 pb-3">
-        <Link href={`/reviews?page=${page - 1}`}>&lt;</Link>
+        {page && page > 1 ? (
+          <Link href={`/reviews?page=${page - 1}`}>&lt;</Link>
+        ) : null}
         <span>Page {page}</span>
         <Link href={`/reviews?page=${page + 1}`}>&gt;</Link>
       </div>
