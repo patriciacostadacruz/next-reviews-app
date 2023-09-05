@@ -27,6 +27,7 @@ function parsePageParams(paramValue: string): number {
 }
 
 export default async function ReviewsPage({ searchParams }: ReviewsPageProps) {
+  // searchParams are treated as dynamic content which cannot be known ahead of time
   const page = parsePageParams(searchParams.page);
   const { reviews, pageCount } = await getReviews(PAGE_SIZE, page);
 
