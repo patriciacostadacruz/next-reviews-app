@@ -27,6 +27,9 @@ export async function getReview(slug: string): Promise<FullReview> {
     populate: { image: { fields: ['url'] } },
     pagination: { pageSize: 1, withCount: false },
   });
+  if (data.length === 0) {
+    return null;
+  }
   const item = data[0];
   console.log(data);
   return {
