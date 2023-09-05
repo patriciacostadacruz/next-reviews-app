@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar';
 import { exo2, orbitron } from './fonts';
 import './globals.css';
 
