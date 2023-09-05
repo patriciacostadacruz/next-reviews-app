@@ -1,6 +1,6 @@
 import Heading from '@/components/Heading';
 import ShareButtons from '@/components/ShareButtons';
-import { getReview, getSlugs } from '@/lib/reviews';
+import { getReview } from '@/lib/reviews';
 import { Metadata } from 'next';
 import Image from 'next/image';
 
@@ -12,10 +12,12 @@ interface ReviewPageProps {
   params: ReviewPageParams;
 }
 
-export async function generateStaticParams(): Promise<ReviewPageParams[]> {
-  const slugs = await getSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+export const dynamic = 'force-dynamic';
+
+// export async function generateStaticParams(): Promise<ReviewPageParams[]> {
+//   const slugs = await getSlugs();
+//   return slugs.map((slug) => ({ slug }));
+// }
 
 // allows to give the metadata title dynamically in function of the game
 export async function generateMetadata({
