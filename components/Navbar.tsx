@@ -11,7 +11,9 @@ export default function Navbar() {
           <NavLink href="/reviews">Reviews</NavLink>
         </li>
         <li>
-          <NavLink href="/about">About</NavLink>
+          <NavLink href="/about" prefetch={false}>
+            About
+          </NavLink>
         </li>
       </ul>
     </nav>
