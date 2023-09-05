@@ -15,14 +15,14 @@ export default async function ReviewsPage() {
     <>
       <Heading>Reviews</Heading>
       <ul className="flex flex-row flex-wrap gap-3">
-        {reviews.map((review) => (
+        {reviews.map((review, index) => (
           <li
             className="border w-80 bg-white rounded hover:shadow-xl"
             key={review.slug}
           >
             <Link href={`/reviews/${review.slug}`}>
               <Image
-                priority
+                priority={index === 0}
                 src={review.image}
                 alt="Game"
                 width="320"
