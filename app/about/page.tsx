@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: 'About',
 };
 
-export const revalidate = 30;
-
 export default function AboutPage() {
   return (
     <>
