@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Reviews',
 };
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 30; // seconds
 
 export default async function ReviewsPage() {
   const reviews = await getReviews(6);

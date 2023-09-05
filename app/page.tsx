@@ -5,6 +5,9 @@ import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
+// re-renders if changes exist
+export const revalidate = 30; // seconds
+
 export default async function HomePage() {
   const featuredReviews = await getReviews(3);
 
