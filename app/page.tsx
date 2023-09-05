@@ -1,5 +1,6 @@
 import Heading from '@/components/Heading';
 import { getFeaturedReview } from '@/lib/reviews';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function HomePage() {
@@ -14,7 +15,7 @@ export default async function HomePage() {
           className="flex flex-col sm:flex-row"
           href={`/reviews/${featuredReview.slug}`}
         >
-          <img
+          <Image
             src={featuredReview.image}
             alt="Game"
             width="320"
