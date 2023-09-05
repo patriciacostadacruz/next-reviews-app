@@ -31,7 +31,6 @@ export async function getReview(slug: string): Promise<FullReview> {
     return null;
   }
   const item = data[0];
-  console.log(data);
   return {
     ...toReview(item),
     body: marked(item.attributes.body, { headerIds: false, mangle: false }),
