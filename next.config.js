@@ -8,9 +8,9 @@ module.exports = {
         protocol: 'http',
         hostname: 'localhost',
         // used by Strapi
-        port: '1337',
+        // port: '1337',
         // from Strapi folder where images come from
-        pathname: '/uploads/**',
+        // pathname: '/uploads/**',
       },
     ],
   },
