@@ -6,12 +6,11 @@ import { Combobox } from '@headlessui/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const reviews = [
-  { slug: 'bla', title: 'bla' },
-  { slug: 'bli', title: 'bli' },
-];
+export interface SearchBoxProps {
+  reviews: SearchableReview[];
+}
 
-export default function SearchBox() {
+export default function SearchBox({ reviews }: SearchBoxProps) {
   const router = useRouter();
   const isClient = useIsClient();
   const [query, setQuery] = useState('');
@@ -24,7 +23,11 @@ export default function SearchBox() {
     router.push(`/reviews/${review.slug}`);
   };
 
-  const filtered = reviews.filter((review) => review.title.includes(query));
+  const filtered = reviews
+    .filter((review) =>
+      review.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .slice(0, 5);
 
   return (
     <div className="relative w-50">

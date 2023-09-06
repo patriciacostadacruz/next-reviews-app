@@ -71,6 +71,18 @@ export async function getSlugs(): Promise<string[]> {
   return data.map((item: CmsItem) => item.attributes.slug);
 }
 
+export async function getSearchableReviews(): Promise<SearchableReview[]> {
+  const { data } = await fetchReviews({
+    fields: ['slug', 'title'],
+    sort: ['publishedAt:desc'],
+    pagination: { pageSize: 100 },
+  });
+  return data.map(({ attributes }) => ({
+    slug: attributes.slug,
+    title: attributes.title,
+  }));
+}
+
 async function fetchReviews(parameters: any) {
   const url =
     `${CMS_URL}/api/reviews?` +
