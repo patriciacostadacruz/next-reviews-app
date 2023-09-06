@@ -71,11 +71,14 @@ export async function getSlugs(): Promise<string[]> {
   return data.map((item: CmsItem) => item.attributes.slug);
 }
 
-export async function getSearchableReviews(): Promise<SearchableReview[]> {
+export async function searchReviews(
+  query: string
+): Promise<SearchableReview[]> {
   const { data } = await fetchReviews({
+    filters: { title: { $containsi: query } },
     fields: ['slug', 'title'],
-    sort: ['publishedAt:desc'],
-    pagination: { pageSize: 100 },
+    sort: ['title'],
+    pagination: { pageSize: 5 },
   });
   return data.map(({ attributes }) => ({
     slug: attributes.slug,
