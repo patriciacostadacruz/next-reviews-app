@@ -5,18 +5,20 @@ import { SearchableReview } from '@/lib/reviews';
 import { Combobox } from '@headlessui/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useDebounce } from 'use-debounce';
 
 export default function SearchBox() {
   const router = useRouter();
   const isClient = useIsClient();
   const [query, setQuery] = useState('');
+  const [debouncedQuery] = useDebounce(query, 300);
   const [reviews, setReviews] = useState<SearchableReview[]>([]);
   useEffect(() => {
     if (query.length > 1) {
       // allows to abort dom requests
       const controller = new AbortController();
       (async () => {
-        const url = '/api/search?query=' + encodeURIComponent(query);
+        const url = '/api/search?query=' + encodeURIComponent(debouncedQuery);
         const response = await fetch(url, { signal: controller.signal });
         const reviews = await response.json();
         setReviews(reviews);
@@ -25,7 +27,8 @@ export default function SearchBox() {
     } else {
       setReviews([]);
     }
-  }, [query]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuery]);
 
   if (!isClient) {
     return null;
