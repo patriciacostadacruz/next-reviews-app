@@ -7,6 +7,10 @@ export default function SearchBox() {
   const [isClient, setisClient] = useState(false);
   useEffect(() => setisClient(true), []);
 
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <Combobox>
       <Combobox.Input placeholder="Search..." />
