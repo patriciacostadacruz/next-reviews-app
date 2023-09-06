@@ -13,6 +13,7 @@ export default function SearchBox() {
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(query, 300);
   const [reviews, setReviews] = useState<SearchableReview[]>([]);
+
   useEffect(() => {
     if (query.length > 1) {
       // allows to abort dom requests
