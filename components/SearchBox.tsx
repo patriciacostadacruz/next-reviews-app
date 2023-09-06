@@ -1,12 +1,10 @@
 'use client';
 
+import useIsClient from '@/lib/hooks';
 import { Combobox } from '@headlessui/react';
-import { useEffect, useState } from 'react';
 
 export default function SearchBox() {
-  const [isClient, setisClient] = useState(false);
-  useEffect(() => setisClient(true), []);
-
+  const isClient = useIsClient();
   if (!isClient) {
     return null;
   }
